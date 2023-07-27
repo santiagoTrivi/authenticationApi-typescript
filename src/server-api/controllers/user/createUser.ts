@@ -1,0 +1,43 @@
+import { NextFunction, Request, Response } from "express";
+import { MongodbUserRepository } from "../../../components/user/infrastructure/mongodbUserRepository";
+import { CreateUserUseCase } from "../../../components/user/application/createUserUsecase";
+import { User } from "../../../components/user/domain/userEntity";
+import { uuid } from "uuidv4";
+import bcrypt from "bcrypt";
+import { successResponse } from "../../network/serverResponse";
+
+const monngoUserRepository = new MongodbUserRepository();
+const createUserUsecase = new CreateUserUseCase(monngoUserRepository);
+
+export const createUser = async(req: Request, res: Response, next: NextFunction) => {
+
+    let {username, email, password, birtdate} = req.body;
+
+    const salt = bcrypt.genSaltSync();
+
+    password = bcrypt.hashSync(password, salt);
+
+    const newUser: User = {
+        id: uuid(),
+        username: username,
+        email: email,
+        password: password,
+        birtdate: birtdate
+    }
+
+    try {
+
+        const user = await createUserUsecase.run(newUser);
+        
+        return successResponse(res, {
+            message: "user created", 
+            results: user, 
+            status_code: 201, 
+            success: true
+        })
+
+    } catch (error) {
+        next(error);
+    }
+
+}
