@@ -5,9 +5,12 @@ import { User } from "../../../components/user/domain/userEntity";
 import { uuid } from "uuidv4";
 import bcrypt from "bcrypt";
 import { successResponse } from "../../network/serverResponse";
+import {config } from "../../config/config";
 
 const monngoUserRepository = new MongodbUserRepository();
 const createUserUsecase = new CreateUserUseCase(monngoUserRepository);
+const usedProvider = config.PROVIDERS;
+
 
 export const createUser = async(req: Request, res: Response, next: NextFunction) => {
 
@@ -22,7 +25,8 @@ export const createUser = async(req: Request, res: Response, next: NextFunction)
         username: username,
         email: email,
         password: password,
-        birtdate: birtdate
+        birtdate: birtdate,
+        provider: usedProvider.local
     }
 
     try {

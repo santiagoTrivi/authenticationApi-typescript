@@ -3,10 +3,12 @@ import { TimeStamps } from "@typegoose/typegoose/lib/defaultClasses";
 
 
 
-class Provider extends TimeStamps{
+export class Provider extends TimeStamps{
+
+    public id: string;
 
     @prop({required: true})
-    public id: string;
+    public provider_id: string;
 
     @prop({required: true})
     public provider: string;

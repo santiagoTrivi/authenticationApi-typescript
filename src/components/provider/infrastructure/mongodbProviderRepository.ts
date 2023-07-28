@@ -3,7 +3,7 @@ import { ProviderRepository } from "../domain/providerRepository";
 import { ProviderModel } from "./providerModel";
 
 
-export class mongodbProviderRepository implements ProviderRepository{
+export class MongodbProviderRepository implements ProviderRepository{
 
     async getById(id: string): Promise<Provider> {
 
@@ -12,7 +12,7 @@ export class mongodbProviderRepository implements ProviderRepository{
         if(!provider) return null;
 
         const data: Provider = {
-            id: provider.id,
+            provider_id: provider.provider_id,
             provider: provider.provider
         }
 
@@ -25,7 +25,7 @@ export class mongodbProviderRepository implements ProviderRepository{
         if(!providertarget) return null;
 
         const data: Provider = {
-            id: providertarget.id,
+            provider_id: providertarget.provider_id,
             provider: providertarget.provider
         }
 
@@ -38,7 +38,7 @@ export class mongodbProviderRepository implements ProviderRepository{
         await newProvider.save();
 
         const createdProvider: Provider = {
-            id: newProvider.id,
+            provider_id: newProvider.provider_id,
             provider: newProvider.provider
         }
 

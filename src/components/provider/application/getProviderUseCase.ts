@@ -4,7 +4,7 @@ import { ProviderRepository } from "../domain/providerRepository";
 
 
 
-export class GetProvider{
+export class GetProviderUseCase{
     private readonly providerRepository: ProviderRepository
 
 

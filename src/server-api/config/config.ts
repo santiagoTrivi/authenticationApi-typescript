@@ -19,5 +19,9 @@ export const config = {
     JWT: {
         JWT_PRIVATE_KEY,
         JWT_PUBLIC_KEY
+    },
+    PROVIDERS: {
+        local: 'local',
+        google: 'google'
     }
 }

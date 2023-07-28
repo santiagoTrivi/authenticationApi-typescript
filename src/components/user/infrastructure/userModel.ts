@@ -1,5 +1,6 @@
-import { prop, getModelForClass } from "@typegoose/typegoose";
+import { prop, getModelForClass, Ref } from "@typegoose/typegoose";
 import { TimeStamps } from "@typegoose/typegoose/lib/defaultClasses";
+import { Provider, ProviderModel } from "../../provider/infrastructure/providerModel";
 
 
 class User extends TimeStamps{
@@ -18,6 +19,9 @@ class User extends TimeStamps{
     
     @prop({required: false})
     public birthdate: Date;
+
+    @prop({ref: () => ProviderModel})
+    public provider: Ref< Provider >;
 }
 
 

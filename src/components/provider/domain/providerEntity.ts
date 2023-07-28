@@ -1,4 +1,4 @@
 export interface Provider {
-    id: string;
+    provider_id: string;
     provider: string;
 }

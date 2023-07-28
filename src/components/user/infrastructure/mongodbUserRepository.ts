@@ -1,3 +1,4 @@
+import { ProviderModel } from "../../provider/infrastructure/providerModel";
 import { User } from "../domain/userEntity";
 import { UserRepository } from "../domain/userRepository";
 import { UserModel } from "./userModel";
@@ -31,7 +32,14 @@ export class MongodbUserRepository implements UserRepository{
     }
     async save(user: User): Promise<User> {
         
+        const provider = user.provider;
+
+        const target = await ProviderModel.findOne({provider});
+
+        user.provider = target.id;
+
         const newUser = new UserModel(user);
+
         await newUser.save();
 
         const createdUser: User = {
