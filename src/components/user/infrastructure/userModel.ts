@@ -5,10 +5,12 @@ import { Provider, ProviderModel } from "../../provider/infrastructure/providerM
 
 class User extends TimeStamps{
 
-    @prop({required: false})
     public id: string;
 
-    @prop({required: false})
+    @prop({required: true})
+    public user_id: string;
+
+    @prop({required: true})
     public username: string;
 
     @prop({required: false})

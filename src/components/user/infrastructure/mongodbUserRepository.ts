@@ -15,7 +15,7 @@ export class MongodbUserRepository implements UserRepository{
         if(!user) return null;
 
         const usertarget: User ={
-            id: user.id,
+            user_id: user.id,
             username: user.username,
             email: user.email,
             password: user.password ?? ''
@@ -24,8 +24,21 @@ export class MongodbUserRepository implements UserRepository{
         return usertarget;
 
     }
-    getByEmail(email: string): Promise<User> {
-        throw new Error("Method not implemented.");
+    async getByEmail(email: string): Promise<User> {
+
+        const user = await UserModel.findOne({email});
+
+        if(!user) return null;
+
+        const usertarget: User ={
+            user_id: user.id,
+            username: user.username,
+            email: user.email,
+            password: user.password ?? ''
+        }
+
+        return usertarget;
+
     }
     getAll(): Promise<User[]> {
         throw new Error("Method not implemented.");
@@ -43,7 +56,7 @@ export class MongodbUserRepository implements UserRepository{
         await newUser.save();
 
         const createdUser: User = {
-            id: newUser.id,
+            user_id: newUser.id,
             username: newUser.username,
             email: newUser.email,
             password: newUser.password ?? ''

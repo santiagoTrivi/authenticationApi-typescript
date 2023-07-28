@@ -5,7 +5,9 @@ import { User } from "../../../components/user/domain/userEntity";
 import { uuid } from "uuidv4";
 import bcrypt from "bcrypt";
 import { successResponse } from "../../network/serverResponse";
-import {config } from "../../config/config";
+import { config, singjwtoken } from "../../config";
+
+
 
 const monngoUserRepository = new MongodbUserRepository();
 const createUserUsecase = new CreateUserUseCase(monngoUserRepository);
@@ -21,7 +23,7 @@ export const createUser = async(req: Request, res: Response, next: NextFunction)
     password = bcrypt.hashSync(password, salt);
 
     const newUser: User = {
-        id: uuid(),
+        user_id: uuid(),
         username: username,
         email: email,
         password: password,
@@ -32,10 +34,13 @@ export const createUser = async(req: Request, res: Response, next: NextFunction)
     try {
 
         const user = await createUserUsecase.run(newUser);
+
+        const accesstoken = await singjwtoken(user.user_id);
+        res.cookie('accesstoken',accesstoken, { maxAge: 10800, httpOnly: true });
         
         return successResponse(res, {
             message: "user created", 
-            results: user, 
+            results: {user, accesstoken}, 
             status_code: 201, 
             success: true
         })
