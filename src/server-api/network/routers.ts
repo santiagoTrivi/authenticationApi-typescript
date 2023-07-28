@@ -1,7 +1,8 @@
 import { Router } from "express";
 import { createUser } from "../controllers/user/createUser";
-import { errorHanddle } from "../middewares/errorHandle";
 import { createProviderController } from "../controllers/provider/createProvider";
+import { clientInputValidation } from "../middewares";
+import { userSchema } from "../lib/zodSchema/userSchema";
 
 
 
@@ -11,8 +12,8 @@ const router = Router();
 
 router
 
-.post('/user', createUser, errorHanddle)
-.post('/provider', createProviderController, errorHanddle)
+.post('/user', clientInputValidation(userSchema) ,createUser)
+.post('/provider', createProviderController)
 
 
 

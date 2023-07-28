@@ -7,13 +7,10 @@ $(document).ready(function(){
             username: $('#username').val(),
             email: $('#email').val(),
             password: $('#password').val(),
-            passwordConfirmation: $('#passwordConfirmation').val(),
             birthdate: $('#birthdate').val()
         }
 
-        console.log(userdata);
-
-        fetch('http://localhost:3000/user', {
+        fetch('http://localhost:3000/rest-api/v1/user', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -24,44 +21,24 @@ $(document).ready(function(){
         .then(res => res.json())
         .then(response => {
 
-            console.log(response);
-            if(response.success){
-                return console.log(response)
-            }
-            let error_info  = response.error;
+            const api_response = response.response;
+            console.log(api_response);
 
-            if(response.status === 400){
-                error_info = 'something went wrong'
+            if(api_response.success){
+
+                return console.log(api_response)
+            }else{
+
+                let error_info  = api_response.message;
+
+                if(api_response.status_code === 400){
+                    error_info = 'something went wrong'
+                }
+                
+                $('#loginError').append( `<div class="alert alert-danger mt-3" role="alert">${error_info}</div>` );
             }
-            
-            $('#loginError').append( `<div class="alert alert-danger mt-3" role="alert">${error_info}</div>` );
             
         })
-
-    
-/** 
-        $.ajax({
-            type: "POST",
-            url: "http://localhost:3000/user",
-            data: JSON.stringify(userdata),
-            contentType: "application/json; charset=utf-8",
-            traditional: true,
-            success: function (data) {
-            
-                console.log(data);
-                
-            },
-            error: function (error) {
-                const res = error.responseJSON;
-
-                $('#loginError').append( `<div class="alert alert-danger mt-3" role="alert">${res.error}</div>` );
-                
-            }
-        });
-
-
-*/
-
 
     })
 })

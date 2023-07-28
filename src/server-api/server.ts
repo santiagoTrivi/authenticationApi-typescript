@@ -3,6 +3,7 @@ import cors from 'cors';
 import morgan from "morgan";
 import { mongodb } from "./config/database";
 import cookieParser from "cookie-parser";
+import { errorHanddle } from "./middewares/errorHandle";
 
 
 export default class ServerChat{
@@ -35,7 +36,7 @@ export default class ServerChat{
     }
 
     routers(mainPath: string, routers: any) {
-        this.app.use(mainPath, routers);
+        this.app.use(mainPath, routers, errorHanddle);
     }
 
     listen() {

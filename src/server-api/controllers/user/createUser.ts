@@ -2,11 +2,10 @@ import { NextFunction, Request, Response } from "express";
 import { MongodbUserRepository } from "../../../components/user/infrastructure/mongodbUserRepository";
 import { CreateUserUseCase } from "../../../components/user/application/createUserUsecase";
 import { User } from "../../../components/user/domain/userEntity";
-import { uuid } from "uuidv4";
+import { v4 } from "uuid";
 import bcrypt from "bcrypt";
 import { successResponse } from "../../network/serverResponse";
 import { config, singjwtoken } from "../../config";
-
 
 
 const monngoUserRepository = new MongodbUserRepository();
@@ -16,20 +15,20 @@ const usedProvider = config.PROVIDERS;
 
 export const createUser = async(req: Request, res: Response, next: NextFunction) => {
 
-    let {username, email, password, birtdate} = req.body;
+    let {username, email, password, birthdate} = req.body;
 
     const salt = bcrypt.genSaltSync();
 
     password = bcrypt.hashSync(password, salt);
 
     const newUser: User = {
-        user_id: uuid(),
-        username: username,
-        email: email,
-        password: password,
-        birtdate: birtdate,
+        user_id: v4(),
+        username,
+        email,
+        password,
+        birthdate,
         provider: usedProvider.local
-    }
+    } 
 
     try {
 
