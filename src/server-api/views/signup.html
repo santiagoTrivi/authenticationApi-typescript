@@ -56,11 +56,25 @@
                 <div class="input-group mb-3">
                     <button id="submit" class="btn btn-lg btn-primary w-100 fs-6">Signup</button>
                 </div>
-                <div class="input-group mb-3">
-                    <button class="btn btn-lg btn-light w-100 fs-6"><img src="images/google.png" style="width:20px" class="me-2"><small>Sign In with Google</small></button>
-                </div>
+                <div id="g_id_onload"
+     data-client_id="406818936459-gittbk32nbkubl5mgn7ttdjnbae3jvhj.apps.googleusercontent.com"
+     data-context="use"
+     data-ux_mode="popup"
+     data-callback="handleCredentialResponse"
+     data-itp_support="false">
+</div>
+
+<div class="g_id_signin"
+     data-type="standard"
+     data-shape="rectangular"
+     data-theme="outline"
+     data-text="continue_with"
+     data-size="large"
+     data-logo_alignment="center">
+</div>
+                <script src="https://accounts.google.com/gsi/client" async defer></script>
                 <div class="row">
-                    <small>Already have account?<a href="index.html">Login</a></small>
+                    <small>Already have account?<a href="http://localhost:3000">Login</a></small>
                 </div>
           </div>
        </div> 

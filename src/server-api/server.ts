@@ -6,7 +6,7 @@ import cookieParser from "cookie-parser";
 import { errorHanddle } from "./middewares/errorHandle";
 import  serverEndpoint  from "./network/index";
 import  swaggerUi  from "swagger-ui-express";
-
+import path from "path";
 
 export default class ServerChat{
 
@@ -41,7 +41,8 @@ export default class ServerChat{
         
         this.app.use('/v1', serverEndpoint, errorHanddle)
         //static path server
-       
+        this.app.use(express.static(path.join(__dirname, 'views')))
+        
 
         //swagger docs
         this.app.use('/docs', 

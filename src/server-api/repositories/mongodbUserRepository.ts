@@ -38,7 +38,10 @@ export class MongodbUserRepository implements UserRepository{
             user_id: user.id,
             username: user.username,
             email: user.email,
-            password: user.password ?? ''
+            password: user.password ?? '',
+            birthdate: user.birthdate,
+            createdAt: user.createdAt,
+            updatedAt: user.updatedAt
         }
 
         return usertarget;

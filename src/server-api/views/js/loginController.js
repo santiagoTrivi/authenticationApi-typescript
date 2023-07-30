@@ -4,7 +4,7 @@ $(document).ready(function(){
         $('#loginError').empty();
 
         const userdata = {
-            username: $('#username').val(),
+            email: $('#email').val(),
             password: $('#userPassword').val()
         }
 

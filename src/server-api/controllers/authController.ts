@@ -8,6 +8,7 @@ import { UserRepository } from "../../domain/user/userRepository";
 import { CreateUserUseCase } from "../../application/user/createUserUsecase";
 import { User } from "../../domain/user/userEntity";
 import { Auth } from "../../domain/user/authEntity";
+import { GetUserInfoUseCase } from "../../application/user/getUserInfoUseCase";
 
 
 
@@ -20,10 +21,12 @@ export default class AuthController{
 
     private createUserUsecase;
     private authloginUseCase;
+    private getUserInfoUseCase;
 
     constructor(private readonly userRepository: UserRepository){
         this.createUserUsecase = new CreateUserUseCase(this.userRepository);
         this.authloginUseCase = new AuthLoginUseCase(this.userRepository);
+        this.getUserInfoUseCase = new GetUserInfoUseCase(this.userRepository);
     }
     
     @SuccessResponse('201', 'user created')
@@ -59,6 +62,28 @@ export default class AuthController{
         const {password, ...userInfo} = user;
 
         return userInfo;
+
+    }
+
+    oauth2ByGoogle = async(email: string) => {
+
+        const user = await this.getUserInfoUseCase.run(email);
+
+        if(user){
+            const {password, ...userInfo} = user;
+            return userInfo;
+        }
+
+        const newUser: User = {
+            user_id: v4(),
+            username: email.split('@')[0],
+            email,
+            provider: usedProvider.google
+        } 
+
+        const createdUser = await this.createUserUsecase.run(newUser);
+
+        return createdUser;
 
     }
 

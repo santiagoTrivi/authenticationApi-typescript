@@ -21,7 +21,7 @@ export class AuthLoginUseCase{
 
     run = async(data: Auth): Promise<User> => {
         
-        const user = await this.getUserInfo.run(data.username);
+        const user = await this.getUserInfo.run(data.email);
 
         if(!user) throw new BadRequestError('User not found', 'not found');
 

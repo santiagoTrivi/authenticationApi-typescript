@@ -9,8 +9,8 @@ export class GetUserInfoUseCase{
 
     constructor(private readonly userRepository: UserRepository){}
      
-    run = async(username: string): Promise<User | null>  => {
-        const user = await this.userRepository.getByUsername(username);
+    run = async(email: string): Promise<User | null>  => {
+        const user = await this.userRepository.getByEmail(email);
 
         if(!user) return null;
 
