@@ -5,10 +5,10 @@ $(document).ready(function(){
 
         const userdata = {
             username: $('#username').val(),
-            userPassword: $('#userPassword').val()
+            password: $('#userPassword').val()
         }
 
-        fetch('http://localhost:3000/auth/login', {
+        fetch('http://localhost:3000/v1/auth/login', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -19,14 +19,12 @@ $(document).ready(function(){
         .then(res => res.json())
         .then(response => {
 
-            if(response.success){
-                return console.log(response)
-            }
-            let error_info  = response.error;
+            const serverResponse = response.response;
 
-            if(response.status === 400){
-                error_info = 'something went wrong'
+            if(serverResponse.success){
+                return console.log(serverResponse)
             }
+            let error_info  = serverResponse.message;
             
             $('#loginError').append( `<div class="alert alert-danger mt-3" role="alert">${error_info}</div>` );
             

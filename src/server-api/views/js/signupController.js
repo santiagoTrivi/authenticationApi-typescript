@@ -10,7 +10,7 @@ $(document).ready(function(){
             birthdate: $('#birthdate').val()
         }
 
-        fetch('http://localhost:3000/rest-api/v1/user', {
+        fetch('http://localhost:3000/v1/auth/signup', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

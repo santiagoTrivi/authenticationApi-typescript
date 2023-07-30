@@ -1,6 +1,6 @@
-import { Provider } from "../domain/providerEntity";
-import { ProviderRepository } from "../domain/providerRepository";
-import { ProviderModel } from "./providerModel";
+import { Provider } from "../../domain/provider/providerEntity";
+import { ProviderRepository } from "../../domain/provider/providerRepository";
+import { ProviderModel } from "../ormModel/providerModel";
 
 
 export class MongodbProviderRepository implements ProviderRepository{

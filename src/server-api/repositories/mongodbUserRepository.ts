@@ -1,7 +1,7 @@
-import { ProviderModel } from "../../provider/infrastructure/providerModel";
-import { User } from "../domain/userEntity";
-import { UserRepository } from "../domain/userRepository";
-import { UserModel } from "./userModel";
+import { User } from "../../domain/user/userEntity";
+import { UserRepository } from "../../domain/user/userRepository";
+import { ProviderModel } from "../ormModel/providerModel";
+import { UserModel } from "../ormModel/userModel";
 
 
 export class MongodbUserRepository implements UserRepository{
@@ -18,7 +18,11 @@ export class MongodbUserRepository implements UserRepository{
             user_id: user.id,
             username: user.username,
             email: user.email,
-            password: user.password ?? ''
+            password: user.password ?? '',
+            birthdate: user.birthdate,
+            createdAt: user.createdAt,
+            updatedAt: user.updatedAt
+
         }
 
         return usertarget;

@@ -4,6 +4,8 @@ import morgan from "morgan";
 import { mongodb } from "./config/database";
 import cookieParser from "cookie-parser";
 import { errorHanddle } from "./middewares/errorHandle";
+import  serverEndpoint  from "./network/index";
+import  swaggerUi  from "swagger-ui-express";
 
 
 export default class ServerChat{
@@ -17,7 +19,7 @@ export default class ServerChat{
         this.port = port;
         this.databaseHandle();
         this.middlewares();
-      
+        this.routers();
     }
 
     async databaseHandle(){
@@ -35,8 +37,21 @@ export default class ServerChat{
         }
     }
 
-    routers(mainPath: string, routers: any) {
-        this.app.use(mainPath, routers, errorHanddle);
+    routers() {
+        
+        this.app.use('/v1', serverEndpoint, errorHanddle)
+        //static path server
+       
+
+        //swagger docs
+        this.app.use('/docs', 
+        swaggerUi.serve,
+        swaggerUi.setup(undefined, {
+            swaggerOptions:{
+                url: "../documentation/swagger.json",
+                explorer: true
+            }
+        }))
     }
 
     listen() {

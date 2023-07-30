@@ -1,7 +1,8 @@
-import { UnathorizedError } from "../../common/domain/exceptions/UnauthorizedError";
-import { Provider } from "../domain/providerEntity";
-import { ProviderRepository } from "../domain/providerRepository";
-import { Existprovider } from "../domain/services/ExistProvider";
+import { UnathorizedError } from "../../domain/common/exceptions/UnauthorizedError";
+import { Provider } from "../../domain/provider/providerEntity";
+import { ProviderRepository } from "../../domain/provider/providerRepository";
+import { Existprovider } from "../../domain/provider/services/ExistProvider";
+
 
 
 

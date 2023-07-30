@@ -1,5 +1,5 @@
 import { Response } from "express";
-import { IErrorReponse, ISuccessResponse } from "../../components/serverResponse/domain/serverResponseEntity";
+import { IErrorReponse, ISuccessResponse } from "../../domain/serverResponse/serverResponseEntity";
 
 
 export const successResponse = (res: Response, response: ISuccessResponse) => {

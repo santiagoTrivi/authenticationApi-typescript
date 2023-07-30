@@ -1,11 +1,11 @@
-import { UnathorizedError } from "../../common/domain/exceptions/UnauthorizedError";
-import { ProviderRepository } from "../domain/providerRepository";
+import { UnathorizedError } from "../../domain/common/exceptions/UnauthorizedError";
+import { ProviderRepository } from "../../domain/provider/providerRepository";
 
 
 
 
 export class GetProviderUseCase{
-    private readonly providerRepository: ProviderRepository
+    private readonly providerRepository: ProviderRepository;
 
 
     constructor(providerRepo: ProviderRepository){

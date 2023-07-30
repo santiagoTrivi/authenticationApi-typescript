@@ -1,7 +1,8 @@
-import { UnathorizedError } from "../../common/domain/exceptions/UnauthorizedError";
-import { ExistUserByEmail, ExistUserByUsername } from "../domain/services/existsUserByUsername";
-import { User } from "../domain/userEntity";
-import { UserRepository } from "../domain/userRepository";
+import { UnathorizedError } from "../../domain/common/exceptions/UnauthorizedError";
+import { ExistUserByEmail, ExistUserByUsername } from "../../domain/user/services/existsUserByUsername";
+import { User } from "../../domain/user/userEntity";
+import { UserRepository } from "../../domain/user/userRepository";
+
 
 
 

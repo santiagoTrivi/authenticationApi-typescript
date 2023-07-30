@@ -5,6 +5,6 @@ export interface User {
     password?: string;
     birthdate?: Date;
     provider?: any;
-    createdAt?: string;
-    updatedAt?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
 }
