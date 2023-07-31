@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import { errorResponse } from "../network/serverResponse";
 import { ErrorServer } from "../../domain/common/ErrorServeer";
+import { errorResponse } from "../lib";
 
 
 

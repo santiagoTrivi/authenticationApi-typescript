@@ -5,7 +5,6 @@ import { mongodb } from "./config/database";
 import cookieParser from "cookie-parser";
 import { errorHanddle } from "./middewares/errorHandle";
 import  serverEndpoint  from "./network/index";
-import  swaggerUi  from "swagger-ui-express";
 import path from "path";
 
 export default class ServerChat{
@@ -43,16 +42,6 @@ export default class ServerChat{
         //static path server
         this.app.use(express.static(path.join(__dirname, 'views')))
         
-
-        //swagger docs
-        this.app.use('/docs', 
-        swaggerUi.serve,
-        swaggerUi.setup(undefined, {
-            swaggerOptions:{
-                url: "../documentation/swagger.json",
-                explorer: true
-            }
-        }))
     }
 
     listen() {

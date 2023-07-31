@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { AnyZodObject, ZodError } from "zod";
-import { errorResponse } from "../network/serverResponse";
+import { errorResponse } from "../lib/serverResponse";
 
 
 

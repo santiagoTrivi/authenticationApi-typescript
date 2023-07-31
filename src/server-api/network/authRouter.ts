@@ -1,8 +1,11 @@
+/**
+ * API root path: http://localhost:3000/v1/
+ * auth router for user authentication
+ */
 import { NextFunction, Request, Response, Router } from "express";
 import { MongodbUserRepository } from "../repositories/mongodbUserRepository";
 import  AuthController  from "../controllers/authController";
-import { singjwtoken, verifyGoogleToken } from "../lib";
-import { successResponse } from "./serverResponse";
+import { singjwtoken, successResponse, verifyGoogleToken } from "../lib";
 import { clientInputValidation } from "../middewares";
 import { googleOauth, loginSchema, userSchema } from "../lib/zodSchema";
 
@@ -12,6 +15,11 @@ const authController = new AuthController(mongodbUserRepository);
 const router = Router();
 
 router
+
+/**
+ * Method: POST
+ * http://localhost:3000/v1/auth/signup
+ */
 .post('/signup', clientInputValidation(userSchema), async(req: Request, res: Response, next: NextFunction) => {
     let {username, email, password, birthdate} = req.body;
     
@@ -32,6 +40,10 @@ router
     }
 })
 
+/**
+ * Method: POST
+ * http://localhost:3000/v1/auth/login
+ */
 .post('/login', clientInputValidation(loginSchema), async(req: Request, res: Response, next: NextFunction) => {
 
     let {email, password} = req.body;
@@ -54,6 +66,10 @@ router
     }
 })
 
+/**
+ * Method: POST
+ * Paht: http://localhost:3000/v1/auth/oauth2/google
+ */
 .post('/oauth2/google', clientInputValidation(googleOauth), async(req: Request, res: Response, next: NextFunction) => {
     let { g_csrf_token } = req.body;
     

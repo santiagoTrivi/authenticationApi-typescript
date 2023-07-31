@@ -1,7 +1,6 @@
 import { v4 } from "uuid";
 import bcrypt from "bcrypt";
 import { config} from "../config";
-import { Post, Route, SuccessResponse, Tags } from "tsoa";
 import { AuthLoginUseCase } from "../../application/user/authLoginUseCase";
 import { UnathorizedError } from "../../domain/common/exceptions/UnauthorizedError";
 import { UserRepository } from "../../domain/user/userRepository";
@@ -15,8 +14,7 @@ import { GetUserInfoUseCase } from "../../application/user/getUserInfoUseCase";
 
 const usedProvider = config.PROVIDERS;
 
-@Route('/v1/auth')
-@Tags('authController')
+
 export default class AuthController{
 
     private createUserUsecase;
@@ -29,9 +27,16 @@ export default class AuthController{
         this.getUserInfoUseCase = new GetUserInfoUseCase(this.userRepository);
     }
     
-    @SuccessResponse('201', 'user created')
-    @Post('/signup')
-    signup = async( username: string, email: string, password: string, birthdate: Date): Promise<User> =>{
+   
+    /**
+     *  User signup controller
+     * @param username { string }
+     * @param email { string }
+     * @param password { string }
+     * @param birthdate  { Date }
+     * @returns { User }
+     */
+    public signup = async( username: string, email: string, password: string, birthdate: Date): Promise<User> =>{
 
         const salt = bcrypt.genSaltSync();
         password = bcrypt.hashSync(password, salt);
@@ -50,8 +55,12 @@ export default class AuthController{
         return user;
 
     }
-
-    login =  async(data: Auth) =>{
+    /**
+     * User login controller
+     * @param data {Auth}
+     * @returns {User}
+     */
+    public login =  async(data: Auth): Promise<User> =>{
 
         const user = await this.authloginUseCase.run(data);
 
@@ -65,7 +74,12 @@ export default class AuthController{
 
     }
 
-    oauth2ByGoogle = async(email: string) => {
+    /**
+     * Oauth2 by google implementation controller
+     * @param email {string}
+     * @returns {User}
+     */
+    public oauth2ByGoogle = async(email: string): Promise<User> => {
 
         const user = await this.getUserInfoUseCase.run(email);
 
