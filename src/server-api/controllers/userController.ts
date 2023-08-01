@@ -14,6 +14,11 @@ export class UserController{
         this.getauthenticatedUser = new GetAuthenticatedUser(userRepository);
     }
 
+    /**
+     * 
+     * @param id {string} user id definred by the domain
+     * @returns {User} included the Provider details
+     */
     public getUserByid = async(id: string): Promise<User> =>{
 
         const user = await this.getauthenticatedUser.run(id);

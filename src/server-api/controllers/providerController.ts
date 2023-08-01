@@ -12,6 +12,11 @@ export class ProviderController{
         this.createProvider = new CreateProviderUseCase(this.providerRepository);
     }
 
+    /**
+     * 
+     * @param provider {string} provider to be implemented in the API
+     * @returns {Provider}
+     */
     create = async(provider: string): Promise<Provider> => {
         
         const newProvider: Provider = {

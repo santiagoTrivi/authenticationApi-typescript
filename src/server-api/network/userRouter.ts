@@ -1,3 +1,9 @@
+
+/**
+ * API root path: http://localhost:3000/v1/
+ * unathenticated user router. acccesstoken required
+ */
+
 import { NextFunction, Request, Response, Router } from "express";
 import { MongodbUserRepository } from "../repositories/mongodbUserRepository";
 import { UserController } from "../controllers/userController";
@@ -12,6 +18,12 @@ const router = Router();
 
 router
 
+
+/**
+ * Method GET
+ * http://localhost:3000/v1/auth/user/:id
+ * @param id {string} user id 
+ */
 .get('/:id',verifyAccessToken , async(req: Request, res: Response, next: NextFunction) => {
 
     let { id } = req.params;
