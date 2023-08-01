@@ -13,5 +13,5 @@ export const errorResponse = (res: Response, response: IErrorReponse) => {
 
     res
     .status(response.status_code)
-    .json({ response })
+    .json({response})
 }

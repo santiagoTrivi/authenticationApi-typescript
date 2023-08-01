@@ -1,3 +1,4 @@
+import { model } from "mongoose";
 import { User } from "../../domain/user/userEntity";
 import { UserRepository } from "../../domain/user/userRepository";
 import { ProviderModel } from "../ormModel/providerModel";
@@ -5,8 +6,34 @@ import { UserModel } from "../ormModel/userModel";
 
 
 export class MongodbUserRepository implements UserRepository{
-    getById(id: string): Promise<User> {
-        throw new Error("Method not implemented.");
+
+    async getById(id: string): Promise<User> {
+
+        const user = await UserModel.findOne({user_id: id}).populate({
+            path: 'provider', 
+            model: ProviderModel, 
+            select: {
+                provider: 1, 
+                _id: 0
+            }
+        });
+        
+
+        if(!user) return null;
+
+        const usertarget: User ={
+            user_id: user.user_id,
+            username: user.username,
+            email: user.email,
+            password: user.password ?? '',
+            provider: user.provider,
+            birthdate: user.birthdate,
+            createdAt: user.createdAt,
+            updatedAt: user.updatedAt
+
+        }
+
+        return usertarget;
     }
     async getByUsername(username: string): Promise<User | null> {
         
@@ -15,7 +42,7 @@ export class MongodbUserRepository implements UserRepository{
         if(!user) return null;
 
         const usertarget: User ={
-            user_id: user.id,
+            user_id: user.user_id,
             username: user.username,
             email: user.email,
             password: user.password ?? '',
@@ -35,7 +62,7 @@ export class MongodbUserRepository implements UserRepository{
         if(!user) return null;
 
         const usertarget: User ={
-            user_id: user.id,
+            user_id: user.user_id,
             username: user.username,
             email: user.email,
             password: user.password ?? '',
@@ -63,7 +90,7 @@ export class MongodbUserRepository implements UserRepository{
         await newUser.save();
 
         const createdUser: User = {
-            user_id: newUser.id,
+            user_id: newUser.user_id,
             username: newUser.username,
             email: newUser.email,
             password: newUser.password ?? '',

@@ -30,7 +30,7 @@ router
 
         return successResponse(res, {
             message: "user created", 
-            results: {user, accesstoken}, 
+            results: {id: user.user_id, accesstoken}, 
             status_code: 201, 
             success: true
         })
@@ -56,7 +56,7 @@ router
 
         return successResponse(res, {
             message: "login successflly", 
-            results: {user, accesstoken}, 
+            results: {id: user.user_id, accesstoken}, 
             status_code: 201, 
             success: true
         })
@@ -81,7 +81,7 @@ router
 
     return successResponse(res, {
         message: 'done',
-        results: {user, accesstoken},
+        results: {id: user.user_id, accesstoken},
         status_code: 201,
         success: true
     })
