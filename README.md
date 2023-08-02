@@ -32,3 +32,14 @@ To run this project, you will need to add the following environment variables to
 `GOOGLE_CLIENT_SECRET`
 
 Note: `DATABASE` is the link to connect to mongoDB
+
+## How to use this project 🚀
+
+- step 1: Set all environment variables listed above.
+
+- step 2: You can use the following npm script to run this project:
+
+    `npm run dev`: to run the project on the development environment with typescript
+
+    `npm build` and then `npm start`: to run the project in javascript
+
