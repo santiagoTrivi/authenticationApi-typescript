@@ -1,9 +1,7 @@
 
 # AuthenticationApi :triangular_flag_on_post:	:triangular_flag_on_post:	
 
-An authentication REST API that allows user to sign up and log in locally or using google Oauth2.
-
-Besides, Registered users can retrieve their data through a specific endpoint and the access token (json web token). This API was built implementing the clean architecture.
+An authentication REST API that allows user to sign up and log in locally or using google Oauth2. Besides, Registered users can retrieve their data through a specific endpoint and the access token (json web token). This API was built implementing the clean architecture.
 
 
 ## Technologies implemented
