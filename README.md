@@ -1,5 +1,5 @@
 
-# AuthenticationApi 🎯🎯
+# AuthenticationApi :triangular_flag_on_post:	:triangular_flag_on_post:	
 
 An authentication REST API that allows user to sign up and log in locally or using google Oauth2.
 
