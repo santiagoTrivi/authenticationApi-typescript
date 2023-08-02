@@ -43,3 +43,9 @@ Note: `DATABASE` is the link to connect to mongoDB
 
     `npm build` and then `npm start`: to run the project in javascript
 
+
+## Documentation
+
+You can check out online documentation to get all the informacion
+[Documentation](https://documenter.getpostman.com/view/17224019/2s9XxwvDm7)
+
