@@ -5,9 +5,6 @@ An authentication REST API that allows user to sign up and log in locally or usi
 
 Besides, Registered users can retrieve their data throught a specific enpoint and the access token (json web token) 
 
-Thecnologies implemented:
-
-
 
 ## Technologies implemented
 
