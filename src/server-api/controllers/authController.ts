@@ -66,7 +66,7 @@ export default class AuthController{
 
         const validation = bcrypt.compareSync(data.password, user.password);
 
-        if(!validation) throw new UnathorizedError('username or password are incorrect', 'invalid data');
+        if(!validation) throw new UnathorizedError('email or password are incorrect', 'invalid data');
 
         const {password, ...userInfo} = user;
 
