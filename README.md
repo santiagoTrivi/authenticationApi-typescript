@@ -55,4 +55,5 @@ You can check out online documentation to get all the informacion
 
 ## Integration with the Frontend
 
-![alt text]([http://url/to/img.png](https://github.com/santiagoTrivi/authenticationApi-typescript/blob/main/img/1login.jpeg)https://github.com/santiagoTrivi/authenticationApi-typescript/blob/main/img/1login.jpeg?raw=true)
+![1login](https://github.com/santiagoTrivi/authenticationApi-typescript/assets/114887991/1edd1ae9-f62d-4482-9734-9fc1f729437b)
+
