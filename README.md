@@ -53,3 +53,6 @@ Note: `DATABASE` is the link to connect to mongoDB
 You can check out online documentation to get all the informacion
 [Documentation](https://documenter.getpostman.com/view/17224019/2s9XxwvDm7)
 
+## Integration with the Frontend
+
+![alt text]([http://url/to/img.png](https://github.com/santiagoTrivi/authenticationApi-typescript/blob/main/img/1login.jpeg)https://github.com/santiagoTrivi/authenticationApi-typescript/blob/main/img/1login.jpeg)
