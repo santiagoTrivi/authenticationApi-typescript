@@ -53,3 +53,21 @@ Note: `DATABASE` is the link to connect to mongoDB
 You can check out online documentation to get all the informacion
 [Documentation](https://documenter.getpostman.com/view/17224019/2s9XxwvDm7)
 
+## Integration with the Frontend
+
+-Login
+![1login](https://github.com/santiagoTrivi/authenticationApi-typescript/assets/114887991/1edd1ae9-f62d-4482-9734-9fc1f729437b)
+
+- Login: password authentication
+![2login](https://github.com/santiagoTrivi/authenticationApi-typescript/assets/114887991/c2641840-c6ce-4dda-a46d-b331e654b709)
+
+- login: user not found
+![3login](https://github.com/santiagoTrivi/authenticationApi-typescript/assets/114887991/b2b9ebd4-52bd-4cee-8f92-a2a56be9b419)
+
+- Signup
+![4signup](https://github.com/santiagoTrivi/authenticationApi-typescript/assets/114887991/f50ad062-909a-4f02-b2d5-3b4d7bbb62b4)
+
+- Signup: Username already registered
+![5signup](https://github.com/santiagoTrivi/authenticationApi-typescript/assets/114887991/a127863f-e636-40fd-9c5e-4915ef7251c8)
+
+
